@@ -97,13 +97,13 @@ const askQuestion = (question) => {
     "1) Every hour\n2) Every 2 hours\n3) Every 4 hours\n4) Every 6 hours\n5) Every 8 hours\n6) Every 12 hours\n7) Once a day"
   );
 
-  let BALANCE_REPORT_INTERVAL;
+  let BALANCE_REPORT_INTERVAL_MS;
   while (true) {
     const INTERVAL_CHOICE = await askQuestion(
       "Enter the number of your choice (1-7): "
     );
     if (/^[1-7]$/.test(INTERVAL_CHOICE)) {
-      BALANCE_REPORT_INTERVAL = [
+      BALANCE_REPORT_INTERVAL_MS = [
         3600000, 7200000, 14400000, 21600000, 28800000, 43200000, 86400000,
       ][INTERVAL_CHOICE - 1];
       break;
@@ -147,7 +147,7 @@ const askQuestion = (question) => {
   const envContent = `# NBXplorer settings
 NBXPLORER_URL=${NBXPLORER_URL}
 EXTENDED_PUBKEY=${EXTENDED_PUBKEY}
-BALANCE_REPORT_INTERVAL=${BALANCE_REPORT_INTERVAL}
+BALANCE_REPORT_INTERVAL_MS=${BALANCE_REPORT_INTERVAL_MS}
 NBXPLORER_COOKIE_PATH=${NBXPLORER_COOKIE_PATH}
 
 # Ntfy settings
